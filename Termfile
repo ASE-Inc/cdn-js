@@ -1,0 +1,17 @@
+#
+
+setup do
+  run 'npm install'
+  run 'bundle install'
+end
+
+run 'rm -rf _intermediate'
+run 'rm -rf _build'
+
+run 'mkdir _intermediate'
+
+tab 'coffee-stir -wv -o _intermediate/main000.coffee main000.coffee'
+
+tab 'coffee -cbmw --output _build _intermediate'
+
+tab 'coffee -cbmw --output _build/workers workers'
